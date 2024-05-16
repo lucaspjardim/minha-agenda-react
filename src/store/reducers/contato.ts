@@ -10,19 +10,19 @@ const initialState: contactState = {
     {
       id: 1,
       name: 'John',
-      phone: 1234567890,
+      phone: '1234567890',
       email: 'john@gmail.com'
     },
     {
       id: 2,
       name: 'Gabriel',
-      phone: 1234567890,
-      email: 'Gabriel@gmail.com'
+      phone: '1234567890',
+      email: 'Joelma@gmail.com'
     },
     {
       id: 3,
       name: 'Thiago',
-      phone: 1234567890,
+      phone: '1234567890',
       email: 'Thiago@gmail.com'
     }
   ]

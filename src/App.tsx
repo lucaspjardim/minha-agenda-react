@@ -1,13 +1,18 @@
 import React from 'react'
-import Formulario from './containers/Main'
-import Contatos from './containers/Contatos'
+import Formulario from './components/Formulario'
+import Contatos from './components/Contatos'
+import { Provider } from 'react-redux'
+import * as S from './styles'
+import store from './store'
 
 const App = () => {
   return (
     <div>
-      <h1>Meu Aplicativo</h1>
-      <Formulario />
-      <Contatos />
+      <Provider store={store}>
+        <S.globalStyle />
+        <Formulario />
+        <Contatos />
+      </Provider>
     </div>
   )
 }
