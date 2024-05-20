@@ -3,7 +3,10 @@ import {
   ContactListContainer,
   ContactItem,
   BotaoCancelarRemover,
-  SearchBar
+  SearchBar,
+  SearchBarWrapper,
+  SearchContainer,
+  SearchIcon
 } from './styles'
 import { RootReducer } from '../../store'
 import { setSearchValue } from '../../store/reducers/pesquisa'
@@ -36,12 +39,17 @@ const Contatos = () => {
   return (
     <ContactListContainer>
       <h2>Lista de Contatos:</h2>
-      <SearchBar
-        type="text"
-        placeholder="Pesquisar contatos..."
-        value={searchValue}
-        onChange={(e) => dispatch(setSearchValue(e.target.value))}
-      />
+      <SearchContainer>
+        <SearchBarWrapper>
+          <SearchBar
+            type="text"
+            placeholder="Pesquisar contatos..."
+            value={searchValue}
+            onChange={(e) => dispatch(setSearchValue(e.target.value))}
+          />
+          <SearchIcon>🔍</SearchIcon>
+        </SearchBarWrapper>
+      </SearchContainer>
       <ul>
         {filterContacts().map((contato) => (
           <ContactItem key={contato.id}>

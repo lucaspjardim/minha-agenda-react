@@ -33,24 +33,48 @@ export const ContactItem = styled.div`
   }
 `
 
+export const BotaoCancelarRemover = styled(Botao)`
+  background-color: red;
+`
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
   margin-top: 10px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+  margin-bottom: 10px;
 `
-export const SearchBar = styled.input`
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+
+export const SearchBarWrapper = styled.div`
+  position: relative;
   width: 100%;
 `
-export const BotaoCancelarRemover = styled(Botao)`
-  background-color: red;
+
+export const SearchBar = styled.input`
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
+
+export const SearchIcon = styled.span`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #888;
+  pointer-events: none;
 `
