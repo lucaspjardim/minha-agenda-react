@@ -27,11 +27,29 @@ export const ContactItem = styled.div`
   p {
     margin: 5px 0;
     font-size: 1rem;
-
-    strong {
-      font-weight: bold;
-    }
   }
+  strong {
+    font-weight: bold;
+  }
+`
+
+export const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`
+export const SearchBar = styled.input`
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
 `
 export const BotaoCancelarRemover = styled(Botao)`
   background-color: red;

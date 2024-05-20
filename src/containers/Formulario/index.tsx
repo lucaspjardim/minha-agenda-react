@@ -24,7 +24,6 @@ const Formulario = () => {
 
   return (
     <FormContainer>
-      {/* <h2>Preencha os dados:</h2> */}
       <form onSubmit={registerForm}>
         <FormInput
           value={name}
