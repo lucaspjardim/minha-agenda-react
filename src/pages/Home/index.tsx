@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux'
 import BotaoAdicionar from '../../components/BotaoAdicionar'
 import Contatos from '../../components/Contatos'
-import Formulario from '../../containers/Formulario'
 import { RootReducer } from '../../store'
 
 const Home = () => {
@@ -9,7 +8,6 @@ const Home = () => {
 
   return (
     <>
-      <Formulario />
       <Contatos contacts={contacts} />
       <BotaoAdicionar />
     </>

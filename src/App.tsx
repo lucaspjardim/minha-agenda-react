@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import * as S from './styles'
 import store from './store'
 import Home from './pages/Home'
-import Cadastro from './pages/Cadastro'
+import Formulario from './containers/Formulario'
 
 const rotas = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ const rotas = createBrowserRouter([
   },
   {
     path: '/cadastro',
-    element: <Cadastro />
+    element: <Formulario />
   }
 ])
 
