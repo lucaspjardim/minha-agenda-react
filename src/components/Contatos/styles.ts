@@ -5,44 +5,96 @@ export const ContactListContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+  background-color: rgba(202, 196, 201, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
     text-align: center;
+    color: #333;
   }
 `
 
 export const ContactItem = styled.div`
   padding: 15px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
+  background-color: #fff;
 
   &:last-child {
     border-bottom: none;
   }
 
-  p {
-    margin: 5px 0;
-    font-size: 1rem;
-  }
   strong {
     font-weight: bold;
+    color: #333;
+  }
+`
+
+export const DescricaoContainer = styled.div`
+  display: flex;
+  align-items: center; /* Alinhar verticalmente */
+  margin-bottom: 10px;
+
+  label {
+    width: 80px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 15px;
+    margin-right: 10px; /* Adiciona um espaço entre o label e o textarea */
+  }
+`
+
+export const Descricao = styled.textarea`
+  flex: 1;
+  font-size: 14px;
+  resize: none;
+  border: none;
+  background-color: transparent;
+  padding: 4px;
+  margin: 0; /* Remover margin extra */
+  transition: all 0.2s;
+  color: #333;
+  overflow: hidden;
+
+  &:disabled {
+    border: none;
+    background-color: transparent;
+    color: #333;
+    cursor: default;
+  }
+
+  &:enabled {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
   }
 `
 
 export const BotaoCancelarRemover = styled(Botao)`
   background-color: red;
+  color: white;
+  font-weight: bold;
+  margin-right: 5px;
 `
+
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `
 
 export const SearchBarWrapper = styled.div`
@@ -77,4 +129,18 @@ export const SearchIcon = styled.span`
   font-size: 20px;
   color: #888;
   pointer-events: none;
+`
+
+export const BotaoEditar = styled(Botao)`
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+  margin-right: 5px;
+`
+
+export const BotaoSalvar = styled(Botao)`
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  margin-right: 5px;
 `

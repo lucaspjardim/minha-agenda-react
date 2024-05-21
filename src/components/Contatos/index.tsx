@@ -6,36 +6,75 @@ import {
   SearchBar,
   SearchBarWrapper,
   SearchContainer,
-  SearchIcon
+  SearchIcon,
+  DescricaoContainer,
+  Descricao,
+  BotaoEditar,
+  BotaoSalvar
 } from './styles'
 import { RootReducer } from '../../store'
 import { setSearchValue } from '../../store/reducers/pesquisa'
-import { deleteContact } from '../../store/reducers/contato'
-import { Botao } from '../../styles'
+import { deleteContact, updateContact } from '../../store/reducers/contato'
+import { useState } from 'react'
+import Contact from '../../models/Contacts'
 
-const Contatos = () => {
+type Props = {
+  contacts: Contact[]
+}
+
+const Contatos = ({ contacts }: Props) => {
   const dispatch = useDispatch()
+
+  const [editingId, setEditingId] = useState<number | null>(null)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+
   const { searchValue } = useSelector((state: RootReducer) => state.search)
-  const { items } = useSelector((state: RootReducer) => state.contacts)
 
   const handleRemoverContato = (id: number) => {
     dispatch(deleteContact(id))
   }
+
+  const startEditing = (contato: Contact) => {
+    setEditingId(contato.id)
+    setName(contato.name)
+    setEmail(contato.email)
+    setPhone(contato.phone)
+  }
+
+  const cancelEdit = () => {
+    setEditingId(null)
+    setName('')
+    setEmail('')
+    setPhone('')
+  }
+
+  const handleSave = (id: number) => {
+    dispatch(updateContact({ id, name, email, phone }))
+    setEditingId(null)
+  }
+
   const filterContacts = () => {
-    let filter = [...items]
+    let filter = [...contacts]
 
     if (searchValue) {
       filter = filter.filter(
-        (items) =>
-          items.name
+        (item) =>
+          item.name
             .toLocaleLowerCase()
             .includes(searchValue.toLocaleLowerCase()) ||
-          items.phone.toLowerCase().includes(searchValue.toLowerCase()) ||
-          items.email.toLowerCase().includes(searchValue.toLowerCase())
+          item.phone
+            .toLocaleLowerCase()
+            .includes(searchValue.toLocaleLowerCase()) ||
+          item.email
+            .toLocaleLowerCase()
+            .includes(searchValue.toLocaleLowerCase())
       )
     }
     return filter
   }
+
   return (
     <ContactListContainer>
       <h2>Lista de Contatos:</h2>
@@ -53,15 +92,51 @@ const Contatos = () => {
       <ul>
         {filterContacts().map((contato) => (
           <ContactItem key={contato.id}>
-            <p>Nome: {contato.name}</p>
-            <p>Telefone: {contato.phone}</p>
-            <p>Email: {contato.email}</p>
-            <Botao>Editar</Botao>
-            <BotaoCancelarRemover
-              onClick={() => handleRemoverContato(contato.id)}
-            >
-              Remover
-            </BotaoCancelarRemover>
+            <DescricaoContainer>
+              <label>Nome:</label>
+              <Descricao
+                value={editingId === contato.id ? name : contato.name}
+                disabled={editingId !== contato.id}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </DescricaoContainer>
+            <DescricaoContainer>
+              <label>Telefone:</label>
+              <Descricao
+                value={editingId === contato.id ? phone : contato.phone}
+                disabled={editingId !== contato.id}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </DescricaoContainer>
+            <DescricaoContainer>
+              <label>Email:</label>
+              <Descricao
+                value={editingId === contato.id ? email : contato.email}
+                disabled={editingId !== contato.id}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </DescricaoContainer>
+            {editingId === contato.id ? (
+              <>
+                <BotaoSalvar onClick={() => handleSave(contato.id)}>
+                  SALVAR
+                </BotaoSalvar>
+                <BotaoCancelarRemover onClick={cancelEdit}>
+                  CANCELAR
+                </BotaoCancelarRemover>
+              </>
+            ) : (
+              <>
+                <BotaoEditar onClick={() => startEditing(contato)}>
+                  EDITAR
+                </BotaoEditar>
+                <BotaoCancelarRemover
+                  onClick={() => handleRemoverContato(contato.id)}
+                >
+                  DELETAR
+                </BotaoCancelarRemover>
+              </>
+            )}
           </ContactItem>
         ))}
       </ul>

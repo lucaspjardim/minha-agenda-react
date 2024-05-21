@@ -33,8 +33,24 @@ const contactSlice = createSlice({
   initialState,
   reducers: {
     addContact: (state, action: PayloadAction<contactModel>) => {
-      state.items.push(action.payload)
+      const contactExists = state.items.find(
+        (contact) =>
+          contact.name.toLowerCase() === action.payload.name.toLowerCase()
+      )
+
+      if (contactExists) {
+        alert('Já existe um contato com este nome na agenda :D')
+      } else {
+        const lastContact = state.items[state.items.length - 1]
+
+        const newTask = {
+          ...action.payload,
+          id: lastContact ? lastContact.id + 1 : 1
+        }
+        state.items.push(newTask)
+      }
     },
+
     deleteContact: (state, action: PayloadAction<number>) => {
       state.items = [...state.items.filter((sc) => sc.id !== action.payload)]
     },

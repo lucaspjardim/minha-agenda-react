@@ -2,9 +2,11 @@ import { useDispatch } from 'react-redux'
 import { FormContainer, FormInput, FormButton } from './styles'
 import { FormEvent, useState } from 'react'
 import { addContact } from '../../store/reducers/contato'
+import { useNavigate } from 'react-router-dom'
 
 const Formulario = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -43,7 +45,9 @@ const Formulario = () => {
           type="email"
           placeholder="Email"
         />
-        <FormButton type="submit">Enviar</FormButton>
+        <FormButton type="submit" onClick={() => navigate('/')}>
+          Enviar{' '}
+        </FormButton>
       </form>
     </FormContainer>
   )
