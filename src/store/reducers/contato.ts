@@ -55,11 +55,19 @@ const contactSlice = createSlice({
       state.items = [...state.items.filter((sc) => sc.id !== action.payload)]
     },
     updateContact: (state, action: PayloadAction<contactModel>) => {
-      // const { id, name, phone, email } = action.payload
-      const index = state.items.findIndex((c) => c.id === action.payload.id)
+      const { id, name } = action.payload
+      const index = state.items.findIndex((c) => c.id === id)
 
       if (index >= 0) {
-        state.items[index] = action.payload
+        const existingContactIndex = state.items.findIndex(
+          (c) => c.name === name && c.id !== id
+        )
+
+        if (existingContactIndex >= 0) {
+          alert('Este contato com este nome já existe!')
+        } else {
+          state.items[index] = action.payload
+        }
       }
     }
   }

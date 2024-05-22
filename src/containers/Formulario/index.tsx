@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './styles'
 import { FormEvent } from 'react'
@@ -24,12 +24,21 @@ const Formulario = () => {
         id: 0
       })
     )
-    // Exibe a mensagem de sucesso
     setShowSuccessMessage(true)
   }
 
+  useEffect(() => {
+    if (showSuccessMessage) {
+      const timer = setTimeout(() => {
+        setShowSuccessMessage(false)
+      }, 1000)
+
+      // Limpa o timer se o componente for desmontado antes dos 3 segundos
+      return () => clearTimeout(timer)
+    }
+  }, [showSuccessMessage])
+
   const handleBackButtonClick = () => {
-    // Navega de volta para a página inicial ("/")
     navigate('/')
   }
 
@@ -59,12 +68,9 @@ const Formulario = () => {
             type="email"
             placeholder="Email"
           />
-          {/* Botão de submissão dentro do formulário */}
           <S.FormButton type="submit">Enviar</S.FormButton>
-          {/* Botão para voltar para a página inicial */}
           <S.Teste onClick={handleBackButtonClick}>Voltar</S.Teste>
         </form>
-        {/* Exibe a mensagem de sucesso se showSuccessMessage for verdadeiro */}
       </S.FormContainer>
     </S.Overlay>
   )
