@@ -37,7 +37,7 @@ export const ContactItem = styled.div`
 
 export const DescricaoContainer = styled.div`
   display: flex;
-  align-items: center; /* Alinhar verticalmente */
+  align-items: center;
   margin-bottom: 10px;
 
   label {
@@ -45,7 +45,7 @@ export const DescricaoContainer = styled.div`
     font-weight: bold;
     color: #555;
     margin-bottom: 15px;
-    margin-right: 10px; /* Adiciona um espaço entre o label e o textarea */
+    margin-right: 10px;
   }
 `
 
@@ -56,7 +56,7 @@ export const Descricao = styled.textarea`
   border: none;
   background-color: transparent;
   padding: 4px;
-  margin: 0; /* Remover margin extra */
+  margin: 0;
   transition: all 0.2s;
   color: #333;
   overflow: hidden;

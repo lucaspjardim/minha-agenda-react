@@ -10,7 +10,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(5px); /* Adiciona o efeito de desfoque no fundo */
+  backdrop-filter: blur(5px);
 `
 
 export const FormContainer = styled.div`
@@ -22,7 +22,7 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  backdrop-filter: blur(5px); /* Adiciona o efeito de desfoque no formulário */
+  backdrop-filter: blur(5px);
 
   h2 {
     font-style: bold;
@@ -66,11 +66,11 @@ export const FormField = styled.div`
 `
 
 export const SuccessMessage = styled.div`
-  color: #155724; /* Cor verde mais escura */
-  background-color: #d4edda; /* Cor de fundo verde clara */
-  border: 1px solid #c3e6cb; /* Borda verde mais escura */
-  border-radius: 4px; /* Borda arredondada */
-  padding: 10px 15px; /* Espaçamento interno */
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 10px 15px;
   font-weight: bold;
   margin-bottom: 4px;
 `

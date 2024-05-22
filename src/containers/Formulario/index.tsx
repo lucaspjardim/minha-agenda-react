@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 const Formulario = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false) // Estado para controlar a exibição da mensagem
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -33,7 +33,6 @@ const Formulario = () => {
         setShowSuccessMessage(false)
       }, 1000)
 
-      // Limpa o timer se o componente for desmontado antes dos 3 segundos
       return () => clearTimeout(timer)
     }
   }, [showSuccessMessage])
