@@ -1,13 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  FormContainer,
-  FormInput,
-  FormButton,
-  Overlay,
-  SuccessMessage,
-  Teste
-} from './styles'
+import * as S from './styles'
 import { FormEvent } from 'react'
 import { addContact } from '../../store/reducers/contato'
 import { useNavigate } from 'react-router-dom'
@@ -41,39 +34,39 @@ const Formulario = () => {
   }
 
   return (
-    <Overlay>
-      <FormContainer>
+    <S.Overlay>
+      <S.FormContainer>
         <h2>Adicionar contatos</h2>
         {showSuccessMessage && (
-          <SuccessMessage>Contato adicionado</SuccessMessage>
+          <S.SuccessMessage>Contato adicionado</S.SuccessMessage>
         )}
         <form onSubmit={registerForm}>
-          <FormInput
+          <S.FormInput
             value={name}
             onChange={(e) => setName(e.target.value)}
             type="text"
             placeholder="Nome"
           />
-          <FormInput
+          <S.FormInput
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             type="number"
             placeholder="Telefone"
           />
-          <FormInput
+          <S.FormInput
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Email"
           />
           {/* Botão de submissão dentro do formulário */}
-          <FormButton type="submit">Enviar</FormButton>
+          <S.FormButton type="submit">Enviar</S.FormButton>
           {/* Botão para voltar para a página inicial */}
-          <Teste onClick={handleBackButtonClick}>Voltar</Teste>
+          <S.Teste onClick={handleBackButtonClick}>Voltar</S.Teste>
         </form>
         {/* Exibe a mensagem de sucesso se showSuccessMessage for verdadeiro */}
-      </FormContainer>
-    </Overlay>
+      </S.FormContainer>
+    </S.Overlay>
   )
 }
 

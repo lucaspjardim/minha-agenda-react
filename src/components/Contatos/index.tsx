@@ -1,17 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  ContactListContainer,
-  ContactItem,
-  BotaoCancelarRemover,
-  SearchBar,
-  SearchBarWrapper,
-  SearchContainer,
-  SearchIcon,
-  DescricaoContainer,
-  Descricao,
-  BotaoEditar,
-  BotaoSalvar
-} from './styles'
+import * as S from './styles'
 import { RootReducer } from '../../store'
 import { setSearchValue } from '../../store/reducers/pesquisa'
 import { deleteContact, updateContact } from '../../store/reducers/contato'
@@ -76,71 +64,71 @@ const Contatos = ({ contacts }: Props) => {
   }
 
   return (
-    <ContactListContainer>
+    <S.ContactListContainer>
       <h2>Lista de Contatos:</h2>
-      <SearchContainer>
-        <SearchBarWrapper>
-          <SearchBar
+      <S.SearchContainer>
+        <S.SearchBarWrapper>
+          <S.SearchBar
             type="text"
             placeholder="Pesquisar contatos..."
             value={searchValue}
             onChange={(e) => dispatch(setSearchValue(e.target.value))}
           />
-          <SearchIcon>🔍</SearchIcon>
-        </SearchBarWrapper>
-      </SearchContainer>
+          <S.SearchIcon>🔍</S.SearchIcon>
+        </S.SearchBarWrapper>
+      </S.SearchContainer>
       <ul>
         {filterContacts().map((contato) => (
-          <ContactItem key={contato.id}>
-            <DescricaoContainer>
+          <S.ContactItem key={contato.id}>
+            <S.DescricaoContainer>
               <label>Nome:</label>
-              <Descricao
+              <S.Descricao
                 value={editingId === contato.id ? name : contato.name}
                 disabled={editingId !== contato.id}
                 onChange={(e) => setName(e.target.value)}
               />
-            </DescricaoContainer>
-            <DescricaoContainer>
+            </S.DescricaoContainer>
+            <S.DescricaoContainer>
               <label>Telefone:</label>
-              <Descricao
+              <S.Descricao
                 value={editingId === contato.id ? phone : contato.phone}
                 disabled={editingId !== contato.id}
                 onChange={(e) => setPhone(e.target.value)}
               />
-            </DescricaoContainer>
-            <DescricaoContainer>
+            </S.DescricaoContainer>
+            <S.DescricaoContainer>
               <label>Email:</label>
-              <Descricao
+              <S.Descricao
                 value={editingId === contato.id ? email : contato.email}
                 disabled={editingId !== contato.id}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </DescricaoContainer>
+            </S.DescricaoContainer>
             {editingId === contato.id ? (
               <>
-                <BotaoSalvar onClick={() => handleSave(contato.id)}>
+                <S.BotaoSalvar onClick={() => handleSave(contato.id)}>
                   SALVAR
-                </BotaoSalvar>
-                <BotaoCancelarRemover onClick={cancelEdit}>
+                </S.BotaoSalvar>
+                <S.BotaoCancelarRemover onClick={cancelEdit}>
                   CANCELAR
-                </BotaoCancelarRemover>
+                </S.BotaoCancelarRemover>
               </>
             ) : (
               <>
-                <BotaoEditar onClick={() => startEditing(contato)}>
+                <S.BotaoEditar onClick={() => startEditing(contato)}>
                   EDITAR
-                </BotaoEditar>
-                <BotaoCancelarRemover
+                </S.BotaoEditar>
+                <S.BotaoCancelarRemover
                   onClick={() => handleRemoverContato(contato.id)}
                 >
                   DELETAR
-                </BotaoCancelarRemover>
+                </S.BotaoCancelarRemover>
               </>
             )}
-          </ContactItem>
+          </S.ContactItem>
         ))}
       </ul>
-    </ContactListContainer>
+    </S.ContactListContainer>
   )
 }
 
